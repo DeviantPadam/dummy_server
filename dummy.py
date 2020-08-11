@@ -28,7 +28,7 @@ def torch():
     sim = model.similar_docs(int(id),topk=10,use='torch') #this will be slow 
     #will try to set a limit
     similar = {'ids':sim[0],'sim_score':sim[1]}
-    return jsonify(similar)+'I think have to add a limit or something to make it efficient it is not usable in websites'
+    return jsonify(similar) #'I think have to add a limit or something to make it efficient it is not usable in websites'
 
 @app.route('/sklearn')
 def sklearn():
