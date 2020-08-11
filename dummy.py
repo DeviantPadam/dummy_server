@@ -35,6 +35,7 @@ def sklearn():
     id = request.args.get('id')
     sim = model.similar_docs(int(id),topk=10,use='sklearn') #this is faster
     #results may be different i dont know why?
+    sim = [int(i) for i in sim]
     similar = {'ids':sim}
     return jsonify(similar)
 
