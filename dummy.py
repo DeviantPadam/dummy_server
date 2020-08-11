@@ -36,7 +36,8 @@ def sklearn():
     sim = model.similar_docs(int(id),topk=10,use='sklearn') #this is faster
     #results may be different i dont know why?
     similar = {'ids':sim}
-    return jsonify(similar)+'Faster'
+    return jsonify(similar)
+
 
 @app.route('/select')
 def select():
