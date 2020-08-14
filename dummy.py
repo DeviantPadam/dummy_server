@@ -25,15 +25,29 @@ def home():
 @app.route('/torch')
 def torch():
     id = request.args.get('id')
+<<<<<<< HEAD
     sim = model.similar_docs(int(id),topk=10,use='torch')
     similar = {'id':[int(i) for i in sim[0]],'score':sim[1]}#working
     return jsonify(similar)
+=======
+    sim = model.similar_docs(int(id),topk=10,use='torch') #this will be slow 
+    #will try to set a limit
+    similar = {'ids':sim[0],'sim_score':sim[1]}
+    return jsonify(similar) #'I think have to add a limit or something to make it efficient it is not usable in websites'
+>>>>>>> 8790f48bbbe998e956baaa3ff76269f6c347aa40
 
 @app.route('/sklearn')
 def sklearn():
     id = request.args.get('id')
+<<<<<<< HEAD
     sim = model.similar_docs(int(id),topk=10,use='sklearn')
     similar = {'id':[int(i) for i in sim[0]],'score':sim[1]}
+=======
+    sim = model.similar_docs(int(id),topk=10,use='sklearn') #this is faster
+    #results may be different i dont know why?
+    sim = [int(i) for i in sim]
+    similar = {'ids':sim}
+>>>>>>> 8790f48bbbe998e956baaa3ff76269f6c347aa40
     return jsonify(similar)
 
 
@@ -45,4 +59,8 @@ def select():
 if "__main__"==__name__:
     app.run()
     
+<<<<<<< HEAD
  
+=======
+ 
+>>>>>>> 8790f48bbbe998e956baaa3ff76269f6c347aa40
