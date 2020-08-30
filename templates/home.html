@@ -10,7 +10,7 @@
 
 <body>
 {% for i in doc_ids %}
-<a href="{{url_for('select',id=i)}}">{{i}}</a><br/>
+<a href="{{url_for('torch',id=i)}}">{{i}}</a><br/>
 {% endfor %}
 
 <a href="{{url_for('home',num=num+1)}}">next</a>
