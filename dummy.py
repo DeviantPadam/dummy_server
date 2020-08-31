@@ -8,9 +8,12 @@ Created on Tue Aug 11 15:53:10 2020
 
 from flask import Flask, jsonify, request, render_template
 from torch2vec.torch2vec import LoadModel
+# import pandas as pd
+
 
 app = Flask(__name__)
 model = LoadModel('/home/deviantpadam/Downloads/weights.npy',f_size=3,pad=[4,2,1])
+# data = pd.read_csv('/home/deviantpadam/Downloads/semantic_dump.txt',delimiter='\t')
 
 @app.route('/')
 def home():
@@ -25,9 +28,10 @@ def home():
 def torch():
     id = request.args.get('id')
     sim = model.similar_docs(int(id),topk=10)
-    
-    similar = dict(zip([int(i) for i in sim[0]],sim[1]))#working
-    return jsonify(similar)
+    similarity = []
+    for i in range(len(sim[0])):
+        similarity.append(dict(id=sim[0][i],score=sim[1][1]))#working
+    return jsonify(similarity)
 
 
 if "__main__"==__name__:
