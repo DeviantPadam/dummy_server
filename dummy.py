@@ -30,7 +30,7 @@ def torch():
     sim = model.similar_docs(int(id),topk=10)
     similarity = []
     for i in range(len(sim[0])):
-        similarity.append(dict(id=sim[0][i],score=sim[1][1]))#working
+        similarity.append(dict(id=sim[0][i],score=sim[1][i]))#working
     return jsonify(similarity)
 
 
